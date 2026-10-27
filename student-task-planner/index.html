@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Student Task Planner home">
+      <span class="brand-mark">✦</span>
+      <span>Study<span class="brand-accent">Space</span></span>
+    </a>
+    <span class="topbar-note">A little progress every day.</span>
+  </header>
+
+  <main class="container">
+    <section class="welcome">
+      <p class="eyebrow" id="today-date">MY STUDY SPACE</p>
+      <h1>Make room for <span>progress and productivity.</span></h1>
+      <p class="welcome-copy">Plan your tasks, protect your focus, and celebrate the small wins. DO NOT PROCRASTINATE! :)</p>
+    </section>
+
+    <section class="stats-grid" aria-label="Task statistics">
+      <article class="stat-card">
+        <span class="stat-label">Total tasks</span>
+        <strong id="total-count">0</strong>
+        <span class="stat-foot">On your list</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Pending</span>
+        <strong id="pending-count">0</strong>
+        <span class="stat-foot">Tasks. Hurry!</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Completed</span>
+        <strong id="completed-count">0</strong>
+        <span class="stat-foot">tasks. Congrats!</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Study streak</span>
+        <strong><span id="streak-count">0</span><small> days</small></strong>
+        <span class="stat-foot">Days with a completed task. Keep it going!</span>
+      </article>
+    </section>
+
+    <section class="two-column">
+      <section class="panel focus-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">START SMALL</p>
+            <h2>Today's Focus</h2>
+          </div>
+          <span class="heading-icon" aria-hidden="true">◎</span>
+        </div>
+        <p class="muted">Choose the one task you'd most like to finish today.</p>
+        <div id="focus-content" class="focus-content">
+          <p class="empty-note">Add a task, then select “Make focus” to place it here.</p>
+        </div>
+        <p class="gentle-note" id="motivation-message">You don't have to do everything. Just begin. ♡</p>
+      </section>
+
+      <section class="panel pomodoro-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">ONE THING AT A TIME</p>
+            <h2>Focus timer</h2>
+          </div>
+          <span class="heading-icon" aria-hidden="true">◷</span>
+        </div>
+        <div class="timer-mode" role="group" aria-label="Timer mode">
+          <button class="mode-button active" data-minutes="25" data-mode="Focus" type="button">Focus · 25 min</button>
+          <button class="mode-button" data-minutes="5" data-mode="Break" type="button">Break · 5 min</button>
+        </div>
+        <div class="timer-display" id="timer-display" aria-live="polite">25:00</div>
+        <p class="timer-status" id="timer-status">Ready when you are.</p>
+        <div class="timer-actions">
+          <button class="button primary-button" id="timer-start" type="button">Start</button>
+          <button class="button secondary-button" id="timer-reset" type="button">Reset</button>
+        </div>
+      </section>
+    </section>
+
+    <section class="panel weekly-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">YOUR CONSISTENCY</p>
+          <h2>Weekly progress</h2>
+        </div>
+        <span id="weekly-summary" class="summary-pill">0 tasks completed</span>
+      </div>
+      <p class="muted">Tasks completed each day this week.</p>
+      <div class="week-chart" id="week-chart" aria-label="Weekly completed task chart"></div>
+    </section>
+
+    <section class="panel planner-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">GET IT OUT OF YOUR HEAD</p>
+          <h2>Add a task</h2>
+        </div>
+      </div>
+      <form id="task-form">
+        <div class="form-grid">
+          <label class="field field-wide">
+            <span>Task title <b>*</b></span>
+            <input id="task-title" name="title" type="text" placeholder="e.g. Practise Java arrays" maxlength="120" required>
+          </label>
+          <label class="field">
+            <span>Subject</span>
+            <input id="task-subject" name="subject" type="text" placeholder="e.g. Java DSA" maxlength="60">
+          </label>
+          <label class="field">
+            <span>Deadline</span>
+            <input id="task-deadline" name="deadline" type="date">
+          </label>
+          <label class="field">
+            <span>Priority</span>
+            <select id="task-priority" name="priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+        </div>
+        <button class="button primary-button add-button" type="submit">＋ Add task</button>
+      </form>
+    </section>
+
+    <section class="tasks-section">
+      <div class="panel-heading tasks-heading">
+        <div>
+          <p class="eyebrow">YOUR PLAN</p>
+          <h2>My tasks</h2>
+        </div>
+        <span id="visible-count" class="summary-pill">0 tasks</span>
+      </div>
+      <div class="filters" role="group" aria-label="Filter tasks">
+        <button class="filter-button active" data-filter="all" type="button">All</button>
+        <button class="filter-button" data-filter="pending" type="button">Pending</button>
+        <button class="filter-button" data-filter="completed" type="button">Completed</button>
+      </div>
+      <div id="task-list" class="task-list">
+        <p class="empty-note">Your list is clear. Add a task whenever you're ready.</p>
+      </div>
+    </section>
+
+    <div id="celebration" class="celebration" role="status" aria-live="polite"></div>
+  </main>
+
+  <footer>
+    <p>Made for steady progress, not perfection. <span aria-hidden="true">♡</span></p>
+  </footer>
+</body>
+</html>
