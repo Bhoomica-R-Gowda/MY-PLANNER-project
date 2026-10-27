@@ -687,3 +687,172 @@ footer span {
     gap: 5px;
   }
 }
+
+/* ---------- Dark mode toggle button ---------- */
+.theme-toggle {
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary);
+}
+
+/* ---------- Dark theme colors ---------- */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --primary: #b5a0ff;
+  --primary-dark: #d2c5ff;
+  --primary-soft: #302747;
+  --page: #12131c;
+  --surface: #1c1d29;
+  --text: #f0eff8;
+  --muted: #aaa9bd;
+  --border: #353648;
+  --green: #80d5ad;
+  --red: #ff9eae;
+  --shadow: 0 5px 22px rgba(0, 0, 0, 0.16);
+}
+
+/* Cards and task areas */
+:root[data-theme="dark"] .empty-note {
+  background: #202130;
+  border-color: #424057;
+}
+
+:root[data-theme="dark"] .focus-task {
+  background: #252237;
+  border-color: #453a65;
+}
+
+/* Timer */
+:root[data-theme="dark"] .timer-mode {
+  background: #262736;
+}
+
+:root[data-theme="dark"] .secondary-button {
+  background: #303143;
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .secondary-button:hover {
+  background: #3a3b50;
+}
+
+/* Weekly progress chart */
+:root[data-theme="dark"] .week-bar-track {
+  background: #2c2740;
+}
+
+:root[data-theme="dark"] .week-bar {
+  background: #7764ad;
+}
+
+/* Form inputs */
+:root[data-theme="dark"] .field input,
+:root[data-theme="dark"] .field select {
+  background: #242533;
+  color: var(--text);
+  border-color: #414255;
+}
+
+:root[data-theme="dark"] .field input::placeholder {
+  color: #a3a2b7;
+}
+
+/* Filters and task cards */
+:root[data-theme="dark"] .filter-button {
+  background: #222330;
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .filter-button.active {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+  border-color: #554575;
+}
+
+:root[data-theme="dark"] .task-item {
+  background: #20212e;
+}
+
+:root[data-theme="dark"] .task-item.completed {
+  background: #202c29;
+}
+
+:root[data-theme="dark"] .task-item.completed .task-title {
+  color: #a0b5ab;
+}
+
+/* Priority badges */
+:root[data-theme="dark"] .priority-low {
+  color: #a9ccff;
+  background: #23334a;
+}
+
+:root[data-theme="dark"] .priority-medium {
+  color: #f4d28a;
+  background: #41351f;
+}
+
+:root[data-theme="dark"] .priority-high {
+  color: #ffb4c0;
+  background: #452632;
+}
+
+:root[data-theme="dark"] .deadline-badge {
+  color: #d0cce0;
+  background: #333243;
+}
+
+:root[data-theme="dark"] .small-button {
+  background: #242533;
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .delete-button:hover {
+  background: #452632;
+  border-color: #75404d;
+}
+
+/* Completion message */
+:root[data-theme="dark"] .celebration {
+  color: #b5f0d1;
+  background: #20372f;
+  border-color: #345e4c;
+}
+
+/* Keep the main action button readable */
+:root[data-theme="dark"] .primary-button {
+  background: #7657c8;
+  color: #ffffff;
+}
+
+:root[data-theme="dark"] .primary-button:hover {
+  background: #6246aa;
+}
+
+/* Keep the header button aligned on small screens */
+@media (max-width: 520px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .topbar-note {
+    display: none;
+  }
+
+  .theme-toggle {
+    margin-left: auto;
+  }
+}
+

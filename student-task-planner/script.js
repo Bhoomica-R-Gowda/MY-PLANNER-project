@@ -26,6 +26,8 @@ const celebration = document.getElementById("celebration");
 
 const TASKS_KEY = "studentPlannerTasks_v1";
 const FOCUS_KEY = "studentPlannerFocus_v1";
+const THEME_KEY = "studentPlannerTheme_v1";
+const themeToggle = document.getElementById("theme-toggle");
 
 let tasks = loadTasks();
 let activeFilter = "all";
@@ -482,3 +484,32 @@ document.getElementById("today-date").textContent = new Date().toLocaleDateStrin
 
 updateTimerDisplay();
 renderAll();
+
+/* ---------- Dark mode functionality ---------- */
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+
+  if (theme === "dark") {
+    themeToggle.textContent = "☀️ Light mode";
+    themeToggle.setAttribute("aria-label", "Switch to light mode");
+    themeToggle.setAttribute("aria-pressed", "true");
+  } else {
+    themeToggle.textContent = "🌙 Dark mode";
+    themeToggle.setAttribute("aria-label", "Switch to dark mode");
+    themeToggle.setAttribute("aria-pressed", "false");
+  }
+}
+
+// Restore the saved theme, or use light mode by default.
+const savedTheme = localStorage.getItem(THEME_KEY);
+applyTheme(savedTheme === "dark" ? "dark" : "light");
+
+// Switch themes when the button is clicked.
+themeToggle.addEventListener("click", () => {
+  const currentTheme = document.documentElement.dataset.theme;
+  const nextTheme = currentTheme === "dark" ? "light" : "dark";
+
+  applyTheme(nextTheme);
+  localStorage.setItem(THEME_KEY, nextTheme);
+});
+
